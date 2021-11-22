@@ -1,0 +1,12 @@
+{% load category_tags %}
+
+<ul>
+    {% for child_category in child_categories %}
+        <li class="nav-bar-items"><a href="{{ child_category.get_absolute_url }}">{{ child_category }}</a></li>
+
+        {% get_child_category child_category as child_categories %}
+        {% include 'partials/category_children_navbar.html' %}
+
+    {% endfor %}
+    
+</ul>

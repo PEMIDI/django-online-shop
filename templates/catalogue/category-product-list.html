@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ category }}
+{% endblock title %}
+
+{% block content %}
+
+    <h1>Product List</h1>
+
+    <h3>Category: {{ category }}</h3>
+
+    {% for product in products %}
+        <p><a href="{{ product.get_absolute_url }}">{{ product.title }}</a></p>
+    {% empty %}
+        <p>Product not exists</p>
+    {% endfor %}
+
+{% endblock content %}

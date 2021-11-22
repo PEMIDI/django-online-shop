@@ -1,0 +1,1 @@
+console.log('Welcome to product list page')

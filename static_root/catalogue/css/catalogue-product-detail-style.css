@@ -1,0 +1,17 @@
+.partner {
+    color: black;
+    display: inline-block;
+    background-color: darkgray;
+    padding: 10px;
+    border: 3px solid;
+    border-radius: 8px ;
+}
+
+.price {
+    background-color: darkgray;
+    display: inline;
+    padding: 10px;
+    color: darkblue;
+    border: 3px solid;
+    border-radius: 8px ;
+}

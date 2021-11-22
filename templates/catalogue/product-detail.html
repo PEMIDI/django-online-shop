@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra-css %}
+    <link rel="stylesheet" href="{% static 'catalogue/css/catalogue-product-detail-style.css' %}">
+{% endblock extra-css %}
+
+{% block title %}
+    {{ product.title }}
+{% endblock title %}
+
+{% block content %}
+
+    <h1>Product Detail</h1>
+
+    {% for img in product.get_images %}
+        <img src="{{ img.image.url }}" width="200px" height="100px">
+    {% empty %}
+        <img src="{% static 'images/no-image.png' %}" width="200px">
+    {% endfor %}
+
+
+    <p>title: {{ product.title }}</p>
+    <p>category: {{ product.category.name }}</p>
+    <p>brand: {{ product.brand.name }}</p>
+
+    <h4>-  Product attributes</h4>
+    <ul>
+        {% for attribute in product.get_attributes %}
+            <li>{{ attribute.product_attribute.title }}: {{ attribute.value }}</li>
+        {% empty %}
+            <h3>Not attributes</h3>
+        {% endfor %}
+    </ul>
+
+    {% if product.get_stock %}
+        <h4>- Recommended reseller</h4>
+        <p class="partner">partner: {{ product.get_stock.partner.name }}</p>
+        <p class="price">price: ${{ product.get_stock.price }}</p>
+
+        <h4>- Other reseller</h4>
+        {% for stock in product.get_stocks %}
+            <div>
+                <p class="partner">partner: {{ stock.partner.name }}</p>
+                <p class="price">price: ${{ stock.price }}</p>
+            </div>
+        {% empty %}
+            <h3>Not other reseller</h3>
+        {% endfor %}
+    {% endif %}
+
+{% endblock content %}

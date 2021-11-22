@@ -1,0 +1,15 @@
+{% load category_tags %}
+
+<h4>Category navbar coming soon...</h4>
+
+{% get_parent_category as parent_categories %}
+<ul>
+    {% for parent_category in parent_categories %}
+        <li class="nav-bar-items"><a href="{{ parent_category.get_absolute_url }}">{{ parent_category }}</a></li>
+
+        {% get_child_category parent_category as child_categories %}
+        {% include 'partials/category_children_navbar.html' %}
+
+    {% endfor %}
+</ul>
+<hr>

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra-css %}
+    <link rel="stylesheet" href="{% static 'catalogue/css/catalogue-product-list-style.css' %}">
+{% endblock extra-css %}
+
+{% block title %}
+    Product list page
+{% endblock title %}
+
+{% block content %}
+
+    <h1>Product List</h1>
+
+    {% for product in products %}
+        <p><a href="{{ product.get_absolute_url }}">{{ product.title }}</a></p>
+    {% endfor %}
+
+{% endblock content %}
+
+{% block extra-js %}
+    <script src="{% static 'catalogue/js/catalogue-app.js' %}"></script>
+{% endblock extra-js %}
