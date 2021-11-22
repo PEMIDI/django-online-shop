@@ -70,7 +70,7 @@ def category_product_list_view(request, pk, slug):
         category = qs.first()
     else:
         return HttpResponse('Category Does Not Exist')
-    products = Product.objects.filter(category__in=category.get_children_category)  # hit-2
+    products = Product.objects.filter(category=category)  # hit-2
 
     context = {
         'category': category,
